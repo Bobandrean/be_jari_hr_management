@@ -28,9 +28,7 @@ class UserRepositoryImplement extends Eloquent implements UserRepository{
 
         try {
             $user = $this->model::where('email', $request->email)
-            ->get();
-
-
+            ->first();
 
             if (!Hash::check($request->password, $user->password)) {
                 return ResponseHelpers::sendError('Unauthorized', '', 400);
@@ -49,12 +47,22 @@ class UserRepositoryImplement extends Eloquent implements UserRepository{
                 "sanctum" => $accessToken,
                 "user" => $user,
             ];
+
+            return ResponseHelpers::sendSuccess('Sukses login',$result, 200);
         } catch (\Throwable $th) {
-            return $th;
             return ResponseHelpers::sendError('Unauthorized',$th,400);
         }
-
-        return ResponseHelpers::sendSuccess('Sukses login',$result, 200);
+        
     }
-    // Write something awesome :)
+
+    public function userLogout($request)
+    {
+        try {
+            $request->user()->currentAccessToken()->delete();
+            return ResponseHelpers::sendSuccess('Token revoked',[], 200);
+        } catch (\Throwable $th) {
+            return ResponseHelpers::sendError($th->getMessage(), [], 400);
+        }
+    }
+
 }

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('position', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_employee');
-            $table->integer('quota');
+            $table->string('title');
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->string('created_by');
             $table->timestamps();
             $table->softDeletes();
         });

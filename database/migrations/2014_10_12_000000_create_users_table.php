@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
             $table->unsignedBigInteger('role_id'); // Add a foreign key for the role
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes(); // Add soft delete column 'deleted_at'
         });

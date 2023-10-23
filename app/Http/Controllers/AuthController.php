@@ -20,4 +20,9 @@ class AuthController extends Controller
     {
         return $this->UserRepository->authenticate($request);
     }
+
+    public function logout(Request $request)
+    {
+        return $this->UserRepository->userLogout($request);
+    }
 }

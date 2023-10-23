@@ -18,7 +18,9 @@ class ResponseHelpers
             $response['errors'] = $errors;
         }
 
-        throw new HttpResponseException(response()->json($response, $code));
+        // throw new HttpResponseException(response()->json($response, $code));
+
+        return response()->json($response, $code);
     }
 
     public static function sendSuccess($message, $data = [], $code = 200)
@@ -33,6 +35,8 @@ class ResponseHelpers
             $response['data'] = $data;
         }
 
-        throw new HttpResponseException(response()->json($response, $code));
+        // throw new HttpResponseException(response()->json($response, $code));
+
+        return response()->json($response, $code);
     }
 }

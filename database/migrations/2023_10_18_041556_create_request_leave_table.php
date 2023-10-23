@@ -16,10 +16,11 @@ return new class extends Migration
             $table->unsignedBigInteger('id_employee');
             $table->date('leave_from');
             $table->date('leave_to');
-            $table->boolean('status')->default(false);
-            $table->string('is_approved_reject_remark')->nullable();
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('is_approved', ['approved', 'rejected', 'pending'])->nullable();
+            $table->string('reject_remark')->nullable();
+            $table->string('created_by');
+            $table->string('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

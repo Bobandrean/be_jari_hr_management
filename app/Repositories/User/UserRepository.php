@@ -8,4 +8,5 @@ interface UserRepository extends Repository{
 
     // Write something awesome :)
     public function authenticate($request);
+    public function userLogout($request);
 }

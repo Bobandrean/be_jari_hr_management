@@ -26,7 +26,9 @@ return new class extends Migration
             $table->integer('salary')->nullable();
             $table->string('email')->unique();
             $table->string('phone_number');
-            $table->string('password');
+            $table->enum('status', ['active', 'inactive']);
+            $table->string('created_by');
+            $table->timestamps();
             $table->softDeletes();
         });
     }

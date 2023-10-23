@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();             // Creates an auto-incrementing primary key column 'id'
             $table->string('title');   // Creates a 'title' column of type VARCHAR
             $table->softDeletes();     // Adds the 'deleted_at' column for soft deletes
-            $table->timestamps();      // Adds 'created_at' and 'updated_at' timestamp columns
+            $table->timestamps();      // Adds 'created_at' and 'updated_at' timestamp columns 
             // You can add more columns and constraints here as needed
         });
     }
