@@ -92,6 +92,8 @@ class Employee extends Model
         return $employee;
     }
 
+
+
     public static function updateEmployee($data, $id){
         $employee = self::find($id);
 

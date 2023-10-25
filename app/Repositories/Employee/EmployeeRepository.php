@@ -6,7 +6,7 @@ use LaravelEasyRepository\Repository;
 
 interface EmployeeRepository extends Repository{
 
-    public function viewEmployee();
+    public function viewEmployee($request);
     public function createEmployee($request);
     public function deleteEmployee($id);
     public function updateEmployee($request, $id);

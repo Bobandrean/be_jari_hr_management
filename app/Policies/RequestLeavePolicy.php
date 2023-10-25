@@ -11,6 +11,6 @@ class RequestLeavePolicy
      */
     public function __construct()
     {
-        //
+        
     }
 }

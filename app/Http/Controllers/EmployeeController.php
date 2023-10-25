@@ -20,7 +20,7 @@ class EmployeeController extends Controller
 
     public function index(EmployeeViewRequest $request)
     {
-        return $this->EmployeeRepository->viewEmployee();
+        return $this->EmployeeRepository->viewEmployee($request);
     }
 
     public function createEmployee(EmployeeRequest $request)
