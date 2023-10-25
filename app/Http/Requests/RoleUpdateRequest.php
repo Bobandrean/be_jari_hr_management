@@ -3,19 +3,18 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 use Illuminate\Contracts\Validation\Validator;
 use App\Http\Helpers\ResponseHelpers;
 use Illuminate\Support\Facades\Gate;
 
-class RoleRequest extends FormRequest
+class RoleUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Gate::allows('create-role');
+        return Gate::allows('update-role');
     }
 
     /**

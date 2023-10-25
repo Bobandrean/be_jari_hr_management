@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Employee\EmployeeRepository;
 use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\EmployeeUpdateRequest;
+use App\Http\Requests\EmployeeDeleteRequest;
+use App\Http\Requests\EmployeeViewRequest;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +18,7 @@ class EmployeeController extends Controller
         $this->EmployeeRepository = $EmployeeRepository;
     }
 
-    public function index()
+    public function index(EmployeeViewRequest $request)
     {
         return $this->EmployeeRepository->viewEmployee();
     }
@@ -25,12 +28,12 @@ class EmployeeController extends Controller
         return $this->EmployeeRepository->createEmployee($request);
     }
 
-    public function deleteEmployee($id)
+    public function deleteEmployee($id, EmployeeDeleteRequest $request)
     {
         return $this->EmployeeRepository->deleteEmployee($id);
     }
 
-    public function updateEmployee(EmployeeRequest $request, $id)
+    public function updateEmployee(EmployeeUpdateRequest $request, $id)
     {
         return $this->EmployeeRepository->updateEmployee($request, $id);
     }

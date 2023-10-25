@@ -3,19 +3,16 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
-use Illuminate\Contracts\Validation\Validator;
-use App\Http\Helpers\ResponseHelpers;
 use Illuminate\Support\Facades\Gate;
 
-class RoleRequest extends FormRequest
+class EmployeeViewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Gate::allows('create-role');
+        return Gate::allows('view-employee');
     }
 
     /**
@@ -26,12 +23,7 @@ class RoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
+            //
         ];
-    }
-
-    public function failedValidation(Validator $validator)
-    {
-        ResponseHelpers::sendError('Validation Error.', $validator->errors());
     }
 }

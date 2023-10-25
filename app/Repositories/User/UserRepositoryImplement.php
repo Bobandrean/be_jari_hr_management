@@ -64,5 +64,21 @@ class UserRepositoryImplement extends Eloquent implements UserRepository{
             return ResponseHelpers::sendError($th->getMessage(), [], 400);
         }
     }
+    public function userProfile()
+    {
+        try {
+            $user = Auth::User();
+
+            if($user == NULL)
+            {
+                return ResponseHelpers::sendError('User tidak di temukan, hubungi admin','',400);
+            }
+
+            return ResponseHelpers::sendSuccess('Sukses Profile',$user,200);
+        }
+        catch(\Throwable $th){
+            return ResponseHelpers::sendError('Unauthorized',$th,400);
+        }
+    }
 
 }

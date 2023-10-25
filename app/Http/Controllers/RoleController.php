@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Role\RoleRepository;
 use App\Http\Requests\RoleRequest;
+use App\Http\Requests\RoleUpdateRequest;
 
 class RoleController extends Controller
 {
@@ -30,7 +31,7 @@ class RoleController extends Controller
         return $this->RoleRepository->deleteRole($id);
     }
 
-    public function updateRole(RoleRequest $request, $id)
+    public function updateRole(RoleUpdateRequest $request, $id)
     {
         return $this->RoleRepository->updateRole($request, $id);
     }

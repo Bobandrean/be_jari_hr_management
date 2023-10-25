@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\RequestLeave;
 use App\Models\AnnualLeave;
+use Illuminate\Support\Facades\Auth;
 
 class Employee extends Model
 {
@@ -78,7 +79,7 @@ class Employee extends Model
         $employee->email = $data['email'];
         $employee->phone_number = $data['phone_number'];
         $employee->status = $data['status'];
-        $employee->created_by = $data['created_by'];
+        $employee->created_by = Auth::User()->id;
 
         $employee->save();
         return $employee;
@@ -107,7 +108,7 @@ class Employee extends Model
         $employee->email = $data['email'];
         $employee->phone_number = $data['phone_number'];
         $employee->status = $data['status'];
-        $employee->created_by = $data['created_by'];
+        $employee->created_by = Auth::User()->id;
 
         $employee->save();
         return $employee;

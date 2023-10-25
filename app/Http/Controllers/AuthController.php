@@ -25,4 +25,8 @@ class AuthController extends Controller
     {
         return $this->UserRepository->userLogout($request);
     }
+    public function profile()
+    {
+        return $this->UserRepository->userProfile();
+    }
 }
