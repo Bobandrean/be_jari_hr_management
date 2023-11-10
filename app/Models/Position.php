@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Support\Facades\Auth;
 
 class Position extends Model
 {
@@ -37,7 +38,7 @@ class Position extends Model
 
         $position->title = $data['title'];
         $position->status = $data['status'];
-        $position->created_by = $data['created_by'];
+        $position->created_by =  Auth::user()->id;
 
         $position->save();
         return $position;
@@ -54,7 +55,7 @@ class Position extends Model
 
         $position->title = $data['title'];
         $position->status = $data['status'];
-        $position->created_by = $data['created_by'];
+        $position->created_by = Auth::user()->id;
 
         $position->save();
         return $position;

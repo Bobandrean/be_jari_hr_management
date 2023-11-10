@@ -36,10 +36,11 @@ class EmployeeRequest extends FormRequest
             'position_id' => 'required|integer',
             'nik' => 'required|string|max:255',
             'salary' => 'required|integer',
-            'email' => 'required|string|max:255',
+            'email' => 'required|string|max:255|email',
             'phone_number' => 'required|string|max:255',
             'password' => 'required|string|max:255',
             'status' => 'required|string|in:active,inactive',
+            'contract' => 'required|string|in:internship,contract,fulltime',
         ];
     }
 

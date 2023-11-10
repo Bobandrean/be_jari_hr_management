@@ -41,6 +41,7 @@ class Employee extends Model
         'phone_number',
         'status',
         'created_by',
+        'contract',
     ];
 
     public function annual_leave()
@@ -79,6 +80,7 @@ class Employee extends Model
         $employee->email = $data['email'];
         $employee->phone_number = $data['phone_number'];
         $employee->status = $data['status'];
+        $employee->contract = $data['contract'];
         $employee->created_by = Auth::User()->id;
 
         $employee->save();
@@ -110,6 +112,7 @@ class Employee extends Model
         $employee->email = $data['email'];
         $employee->phone_number = $data['phone_number'];
         $employee->status = $data['status'];
+        $employee->contract = $data['contract'];
         $employee->created_by = Auth::User()->id;
 
         $employee->save();

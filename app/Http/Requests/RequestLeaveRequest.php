@@ -31,8 +31,6 @@ class RequestLeaveRequest extends FormRequest
             'status' => 'required|string|in:active,inactive',
             'is_approved' => 'required|string|in:approved,pending,rejected',
             'reject_remark' => 'required|string|max:255',
-            'created_by' => 'required|string|max:255',
-            'updated_by => required|string|max:255',
         ];
     }
 

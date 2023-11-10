@@ -24,7 +24,7 @@ class EmployeeRepositoryImplement extends Eloquent implements EmployeeRepository
         $page = $request->input('page', 1);
         $search = $request->input('search', '');
         $order_by = $request->input('order_by', 'id');
-        $sort = $request->input('sort', 'asc'); // Set the default sort to 'asc' if not provided
+        $sort = $request->input('sort', 'asc'); 
         
         try {
             // Filter records based on the search query
@@ -90,4 +90,5 @@ class EmployeeRepositoryImplement extends Eloquent implements EmployeeRepository
             return ResponseHelpers::sendError($th->getMessage(), [], 400);
         }
     }
+    
 }

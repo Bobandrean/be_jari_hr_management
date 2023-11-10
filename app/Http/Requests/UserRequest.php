@@ -4,17 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-use Illuminate\Contracts\Validation\Validator;
-use App\Http\Helpers\ResponseHelpers;
-
-class PositionRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -25,13 +22,7 @@ class PositionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'status' => 'required|string|in:active,inactive',
+            //
         ];
-    }
-
-    public function failedValidation(Validator $validator)
-    {
-        ResponseHelpers::sendError('Validation Error.', $validator->errors());
     }
 }

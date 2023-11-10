@@ -20,9 +20,28 @@ class PositionRepositoryImplement extends Eloquent implements PositionRepository
         $this->model = $model;
     }
 
-    public function viewPosition(){
+    public function viewPosition($request){
         try {        
-            $position = $this->model::paginate(10);
+            if($request->all() != null){
+                $page = $request->input('page', 1);
+                $search = $request->input('search', '');
+                $order_by = $request->input('order_by', 'id');
+                $sort = $request->input('sort', 'asc'); 
+                $per_page = $request->input('per_page',10);
+
+                $filteredQuery = $this->model::where('title', 'like', '%' . $search . '%');
+
+                if (!empty($order_by)) {
+                    $filteredQuery->orderBy($order_by, $sort);
+                }
+
+                $position =$filteredQuery->paginate($per_page);
+                return ResponseHelpers::sendSuccess('List Semua Position', [
+                    'position' => $position
+                ], 200);
+            }
+
+            $position = $this->model::all();
             return ResponseHelpers::sendSuccess('List Semua Position', [
                 'position' => $position
             ], 200);
@@ -75,6 +94,5 @@ class PositionRepositoryImplement extends Eloquent implements PositionRepository
             return ResponseHelpers::sendError($th->getMessage(), [], 400);
         }
     }
-
 
 }

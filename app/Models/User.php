@@ -25,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -55,5 +56,35 @@ class User extends Authenticatable
     public function employee()
     {
         return $this->hasMany(Employee::class);
+    }
+
+    public static function createUser($data){
+        $user = new self;
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->role_id = $data['role_id'];
+        $user->password = bcrypt($data['password']);
+
+        $user->save();
+        return $user;
+    }
+
+    public static function deleteUser($id){
+        $user = self::find($id);
+        $user->delete();
+        return $user;
+    }
+
+    public static function updateUser($data, $id){
+        $user = self::find($id);
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->role_id = $data['role_id'];
+        $user->password = bcrypt($data['password']);
+
+        $user->save();
+        return $user;
     }
 }

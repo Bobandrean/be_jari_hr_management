@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Support\Facades\Auth;
 
 class RequestLeave extends Model
 {
@@ -69,8 +70,8 @@ class RequestLeave extends Model
         $request_leave->status = $data['status'];
         $request_leave->is_approved = $data['is_approved'];
         $request_leave->reject_remark = $data['reject_remark'];
-        $request_leave->created_by = $data['created_by'];
-        $request_leave->updated_by = $data['updated_by'];
+        $request_leave->created_by = Auth::user()->id;
+        $request_leave->updated_by = Auth::user()->id;
 
         $request_leave->save();
         return $request_leave;

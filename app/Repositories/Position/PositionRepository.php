@@ -7,7 +7,7 @@ use LaravelEasyRepository\Repository;
 interface PositionRepository extends Repository{
 
     // Write something awesome :)
-    public function viewPosition();
+    public function viewPosition($request);
     public function createPosition($request);
     public function deletePosition($id);
     public function updatePosition($request, $id);

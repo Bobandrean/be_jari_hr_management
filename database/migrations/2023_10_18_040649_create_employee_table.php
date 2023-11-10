@@ -22,11 +22,12 @@ return new class extends Migration
             $table->string('url_avatar')->nullable();
             $table->date('join_date');
             $table->unsignedBigInteger('position_id');
-            $table->string('nik')->unique();
+            $table->bigInteger('nik')->unique();
             $table->integer('salary')->nullable();
             $table->string('email')->unique();
-            $table->string('phone_number');
+            $table->bigInteger('phone_number');
             $table->enum('status', ['active', 'inactive']);
+            $table->enum('contract', ['internship', 'contract', 'fulltime']);
             $table->string('created_by');
             $table->timestamps();
             $table->softDeletes();

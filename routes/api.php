@@ -8,6 +8,7 @@ use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AnnualLeaveController;
 use App\Http\Controllers\RequestLeaveController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +31,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/profile',[AuthController::class, 'profile']);
-    // Route::get('/position', [PositionController::class, 'viewPosition']);
-    // Route::get('/role', [RoleController::class, 'viewRole']);
-    // Route::get('/annualleave', [AnnualLeaveController::class, 'viewAnnualLeave']);
-    // Route::get('/requestleave', [RequestLeaveController::class, 'viewRequestLeave']);
 
     Route::prefix('employee')->group(function (){
         Route::get('/', [EmployeeController::class, 'index']);
@@ -49,6 +46,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::delete('/delete/{id}', [PositionController::class, 'deletePosition']);
         Route::post('/update/{id}', [PositionController::class, 'updatePosition']);
         Route::get('/view/{id}', [PositionController::class, 'getPositionById']);
+    });
+
+    Route::prefix('user')->group(function (){
+        Route::get('/', [UserController::class, 'viewUser']);
+        Route::post('/create', [UserController::class, 'createUser']);
+        Route::delete('/delete/{id}', [UserController::class, 'deleteUser']);
+        Route::post('/update/{id}', [UserController::class, 'updateUser']);
+        Route::get('/view/{id}', [UserController::class, 'getUserById']);
     });
 
     Route::prefix('role')->group(function (){
@@ -73,6 +78,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::delete('/delete/{id}', [RequestLeaveController::class, 'deleteRequestLeave']);
         Route::post('/update/{id}', [RequestLeaveController::class, 'updateRequestLeave']);
         Route::get('/view/{id}', [RequestLeaveController::class, 'getRequestLeaveById']);
+    });
+
+    Route::prefix('list')->group(function (){
+        Route::get('/position', [PositionController::class, 'listPosition']);
     });
 });
 

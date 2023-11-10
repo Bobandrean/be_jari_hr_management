@@ -16,9 +16,9 @@ class PositionController extends Controller
         $this->PositionRepository = $PositionRepository;
     }
 
-    public function viewPosition()
+    public function viewPosition(Request $request)
     {
-        return $this->PositionRepository->viewPosition();
+        return $this->PositionRepository->viewPosition($request);
     }
 
     public function createPosition(PositionRequest $request)
